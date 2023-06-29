@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 # VARIAVEIS GLOBAIS
 
@@ -22,11 +23,24 @@ def jogo():
     print("  " + lista[2][0] +" ║ "+ lista[2][1] +" ║ "+ lista[2][2])
 
 #DEFINIR ESSA AÇÃO COMO CLASSE USUARIO
-    coluna = int(input("Digite a coluna"))
-    linha =  int(input("Digite a linha"))
+    coluna = int(input("Digite a coluna: "))
+    linha =  int(input("Digite a linha: "))
     
-    lista = lista[coluna][linha]
-    
+    lista[coluna][linha] = "X"
+    os.system('cls')
+    print("  " + lista[0][0] +" ║ "+ lista[0][1] +" ║ "+ lista[0][2])
+    print("═════════════")
+    print("  " + lista[1][0] +" ║ "+ lista[1][1] +" ║ "+ lista[1][2])
+    print("═════════════")
+    print("  " + lista[2][0] +" ║ "+ lista[2][1] +" ║ "+ lista[2][2])
+
+
+#DEFINIR CLASSE PARA MAQUINA NA QUAL PEGA ATRIBUTOS E MÉTODOS DO USUARIO
+    numero_aleatorio_linha = random.randint(0,2)
+    numero_aleatorio_coluna = random.randint(0,2) 
+    lista[numero_aleatorio_linha][numero_aleatorio_coluna] = "O"
+
+    print()
     print("  " + lista[0][0] +" ║ "+ lista[0][1] +" ║ "+ lista[0][2])
     print("═════════════")
     print("  " + lista[1][0] +" ║ "+ lista[1][1] +" ║ "+ lista[1][2])
@@ -34,15 +48,3 @@ def jogo():
     print("  " + lista[2][0] +" ║ "+ lista[2][1] +" ║ "+ lista[2][2])
 
 jogo()
-
-
-#DEFINIR CLASSE PARA MAQUINA NA QUAL PEGA ATRIBUTOS E MÉTODOS DO USUARIO
-def maquina():
-    numero_aleatorio = 1 
-    while numero_aleatorio in lista:
-        numero_aleatorio = random.randint(0, 8)
-        lista[numero_aleatorio] = "O"
-        print()
-        print(lista[0:3])
-        print(lista[3:6])
-        print(lista[6:9])
